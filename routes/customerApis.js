@@ -70,7 +70,14 @@ router.post('/forgot-password', async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 });
- 
+//  Username:	_mainaccount@teachingcopilot.com
+// Password:	Use your cPanel password.
+// Incoming Server:	mail.teachingcopilot.com
+// IMAP Port: 993 POP3 Port: 995
+// Outgoing Server:	mail.teachingcopilot.com
+// SMTP Port: 465
+
+
 // Contact Us
 router.post('/contact', async (req, res) => {
   const name = req.body.name;
@@ -90,13 +97,13 @@ router.post('/contact', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'your-email@gmail.com', // Replace with your Gmail email address
-        pass: 'your-password', // Replace with your Gmail password
+        user: 'mail.teachingcopilot.com', // Replace with your Gmail email address
+        pass: 'Duane@cgpt123', // Replace with your Gmail password
       },
     });
     const mailOptions = {
       from: email,
-      to: 'hik@gmil.com',
+      to: 'hikmatullahit@gmil.com',
       subject: 'New Contact Form Submission',
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     };
