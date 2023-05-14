@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router()
 const Registeration = require('../models/Registeration')
 const ContactForm = require('../models/ContactForm');
- 
+ const nodemailer = require('nodemailer');
+
 // create user signup
 router.post('/signup', async (req, res) => {
   const register = new Registeration({
