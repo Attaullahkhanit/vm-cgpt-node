@@ -6,8 +6,46 @@ const Accounts = require('../models/Accounts')
 const RegisterUsers = require('../models/Registeration')
 const uploadImg = require('../src/uploader')
 const path = require('path')
+const axios = require('axios');
 
  
+
+
+// all none alcohlic perfume
+router.get('/api/call-chatgpt-api', async (req, res) => {
+  
+   const API_KEY = "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";
+  const systemMessage = {
+    "role": "system",
+    "content": ""
+  };
+
+  const apiRequestBody = {
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      systemMessage,
+      { role: "user", content: req.body.prompt } // Assuming you pass the 'prompt' in the request body
+    ]
+  };
+
+  try {
+    const response = await axios.post("https://api.openai.com/v1/chat/completions", apiRequestBody, {
+      headers: {
+        "Authorization": "Bearer " + API_KEY,
+        "Content-Type": "application/json"
+      }
+    });
+
+
+    const data = await response.json(); 
+    res.status(200).json({result:data, message: err.message })
+  } catch (error) {
+    console.error("Error calling the OpenAI API:", error);
+    res.status(500).json({ error: "An error occurred while calling the OpenAI API." });
+  } 
+})
+
+
 // all none alcohlic perfume
 router.get('/user_content', async (req, res) => {
   try {
