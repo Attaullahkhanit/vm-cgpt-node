@@ -12,7 +12,7 @@ const axios = require('axios');
 
 
 // all none alcohlic perfume
-router.get('/call-chatgpt-api', async (req, res) => {
+router.post('/call-chatgpt-api', async (req, res) => {
   
    const API_KEY = "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";
   const systemMessage = {
