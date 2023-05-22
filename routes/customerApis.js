@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Registeration = require('../models/Registeration')
 const ContactForm = require('../models/ContactForm');
- const nodemailer = require('nodemailer');
+//  const nodemailer = require('nodemailer');
 
 // create user signup
 router.post('/signup', async (req, res) => {
@@ -80,49 +80,47 @@ router.post('/forgot-password', async (req, res) => {
 
 
 // Contact Us
-router.post('/contact', async (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const message = req.body.message;
+// router.post('/contact', async (req, res) => {
+//   const name = req.body.name;
+//   const email = req.body.email;
+//   const message = req.body.message;
 
-  try {
-    // Save the contact form data to the database
-    const contactForm = new ContactForm({
-      name: name,
-      email: email,
-      message: message,
-    });
-    await contactForm.save();
+//   try {
+//      const contactForm = new ContactForm({
+//       name: name,
+//       email: email,
+//       message: message,
+//     });
+//     await contactForm.save();
 
-    // Send the contact form data to the specified email address
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'mail.teachingcopilot.com', // Replace with your Gmail email address
-        pass: 'Duane@cgpt123', // Replace with your Gmail password
-      },
-    });
-    const mailOptions = {
-      from: email,
-      to: 'hikmatullahit@gmil.com',
-      subject: 'New Contact Form Submission',
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-    };
-    transporter.sendMail(mailOptions, function (err, info) {
-      if (err) {
-        console.log(err);
-        res.status(500).send({ message: err.message });
-      } else {
-        console.log(info);
-        res.status(200).send({
-          message: 'Your message has been sent',
-          status: true,
-        });
-      }
-    });
-  } catch (err) {
-    res.status(500).send({ message: err.message });
-  }
-});
+//      const transporter = nodemailer.createTransport({
+//       service: 'gmail',
+//       auth: {
+//         user: 'mail.teachingcopilot.com',  
+//         pass: 'Duane@cgpt123',  
+//       },
+//     });
+//     const mailOptions = {
+//       from: email,
+//       to: 'hikmatullahit@gmil.com',
+//       subject: 'New Contact Form Submission',
+//       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+//     };
+//     transporter.sendMail(mailOptions, function (err, info) {
+//       if (err) {
+//         console.log(err);
+//         res.status(500).send({ message: err.message });
+//       } else {
+//         console.log(info);
+//         res.status(200).send({
+//           message: 'Your message has been sent',
+//           status: true,
+//         });
+//       }
+//     });
+//   } catch (err) {
+//     res.status(500).send({ message: err.message });
+//   }
+// });
  
 module.exports = router
