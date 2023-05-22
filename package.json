@@ -20,6 +20,7 @@
     "path": "^0.12.7",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.2",
-    "yamljs": "^0.3.0"
+    "yamljs": "^0.3.0",
+    "axios": "^1.1.3",
   }
 }
