@@ -4,11 +4,11 @@ const alcohlicPerfume = require('../models/alcohlicPerfume')
 const user_content = require('../models/user_content')
 const Accounts = require('../models/Accounts')
 const RegisterUsers = require('../models/Registeration')
-const uploadImg = require('../src/uploader')
+const uploadImg = require('../src/uploader') 
 const path = require('path')
 const axios = require('axios');
-import { Configuration, OpenAIApi } from "openai";
-
+const { Configuration, OpenAIApi } = require("openai");
+ 
  
 
 
