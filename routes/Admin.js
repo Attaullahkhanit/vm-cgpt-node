@@ -25,7 +25,7 @@ const messages = [{ role: "system", content: "What type of chatbot would you lik
       messages,
       model: "gpt-3.5-turbo",
     });
-
+   console.log(messages, 'messages')
     const botMessage = response.data.choices[0].message;
     if (botMessage) {
           res.status(200).json({ data:botMessage, error: "calling the OpenAI API." });
