@@ -14,7 +14,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 // all none alcohlic perfume
 router.post('/call-chatgpt-api', async (req, res) => { 
-const configuration = new Configuration({ apiKey: "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" });
+const configuration = new Configuration({ apiKey: "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" });
 const openai = new OpenAIApi(configuration); 
 const messages = [{ role: "system", content: "What type of chatbot would you like to create? " }];
  
