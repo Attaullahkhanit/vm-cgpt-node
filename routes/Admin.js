@@ -9,7 +9,7 @@ const path = require('path')
 const axios = require('axios');
 const { Configuration, OpenAIApi } = require("openai");
  
- 
+  
 
 
 // all none alcohlic perfume
