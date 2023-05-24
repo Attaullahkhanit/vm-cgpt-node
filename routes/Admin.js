@@ -28,15 +28,14 @@ const messages = [{ role: "system", content: "What type of chatbot would you lik
     });
    console.log(messages, 'messages')
     const botMessage = response.data.choices[0].message;
-    if (botMessage) {
-          res.status(200).json({ data:botMessage, error: "calling the OpenAI API." });
-
-     } else {
-     res.status(500).json({ error: "An error occurred while calling the OpenAI API." })
- 
+    if (response) {
+          res.status(200).json({ data:response, error: "calling the OpenAI API." });
+      } else {
+       res.status(500).json({ error: "An error occurred while calling the OpenAI API." }) 
     }
+   
   } catch (error) {
-    console.log(error.message);
+    console.log(error.message, 'message');
    }  
  
 })
