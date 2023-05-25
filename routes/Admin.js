@@ -14,30 +14,30 @@ const { Configuration, OpenAIApi } = require("openai");
 
 // all none alcohlic perfume
 router.post('/call-chatgpt-api', async (req, res) => { 
- console.log(req, 'req')
-const configuration = new Configuration({ apiKey: "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" });
+ console.log(req.body.prompt, 'req')
+const configuration = new Configuration({ apiKey: "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" });
 const openai = new OpenAIApi(configuration); 
-const messages = [{ role: "system", content: "What type of chatbot would you like to create? " }];
- 
- 
-  messages.push({ role: "user", content: req.body.prompt });
+  
+const prompt = req.body.prompt;
+
+  const messages = [
+    { role: 'system', content: 'You: ' + prompt },
+    { role: 'user', content: prompt }
+  ];
+
   try {
     const response = await openai.createChatCompletion({
       messages,
-      model: "gpt-3.5-turbo",
+      model: 'gpt-3.5-turbo',
     });
-   console.log(messages, 'messages')
-    const botMessage = response.data.choices[0].message;
-    if (response) {
-          res.status(200).json({ data:response, error: "calling the OpenAI API." });
-      } else {
-       res.status(500).json({ error: "An error occurred while calling the OpenAI API." }) 
-    }
-   
+
+    const botMessage = response.data.choices[0].message.content;
+
+    res.json({ botMessage });
   } catch (error) {
-    console.log(error.message, 'message');
-   }  
- 
+    console.error('Error:', error.message);
+    res.status(500).json({ error: 'An error occurred while calling the OpenAI API.' });
+  }
 })
 
 
